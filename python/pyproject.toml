@@ -17,7 +17,7 @@ classifiers = [
   "Operating System :: OS Independent",
   "Topic :: Office/Business :: Financial :: Investment",
 ]
-dependencies = ["iriscan>=0.1.0"]
+dependencies = ["iriscan @ git+https://github.com/iris-intel-app/sdk-python.git"]
 
 [project.urls]
 Homepage = "https://iriscan.app"
@@ -28,3 +28,6 @@ iris-guard = "iris_guard.__main__:main"
 
 [tool.hatch.build.targets.wheel]
 packages = ["iris_guard"]
+
+[tool.hatch.metadata]
+allow-direct-references = true
