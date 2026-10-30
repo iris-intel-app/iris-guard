@@ -1,0 +1,30 @@
+[build-system]
+requires = ["hatchling>=1.24"]
+build-backend = "hatchling.build"
+
+[project]
+name = "iris-guard"
+version = "0.1.0"
+description = "Pre-trade rug filter for Solana trading bots: refuse bundled, dev-dumping and Proxima-launched tokens before you buy. Powered by Iris (iriscan.app)."
+readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [{ name = "Iris (iriscan.app)" }]
+requires-python = ">=3.9"
+keywords = ["solana", "pumpfun", "rug-check", "trading-bot", "sniper", "memecoin", "jupiter", "bundle", "proxima", "iris"]
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "Operating System :: OS Independent",
+  "Topic :: Office/Business :: Financial :: Investment",
+]
+dependencies = ["iriscan>=0.1.0"]
+
+[project.urls]
+Homepage = "https://iriscan.app"
+Pricing = "https://iriscan.app/pricing"
+
+[project.scripts]
+iris-guard = "iris_guard.__main__:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["iris_guard"]

@@ -1,0 +1,26 @@
+{
+  "mint": "mint",
+  "chain": "solana",
+  "dev": {
+    "address": "2zy2NEyvzXfPkdFesbisZViTyz6oCWERFEvSD9PfoRg1"
+  },
+  "complete": true,
+  "insiders": [
+    {
+      "address": "x",
+      "bundled": true,
+      "holds": 0.2
+    }
+  ],
+  "summary": {
+    "insiders": 6,
+    "held_share": 0.253,
+    "bought_share": 0.3,
+    "candidates": 40,
+    "checked": 40,
+    "by_link": {}
+  },
+  "notes": [
+    "6 wallets linked to the dev"
+  ]
+}

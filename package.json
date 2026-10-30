@@ -1,0 +1,39 @@
+{
+  "name": "iris-guard",
+  "version": "0.1.0",
+  "description": "Pre-trade rug filter for Solana trading bots: refuse bundled, dev-dumping and Proxima-launched tokens before you buy. Powered by Iris (iriscan.app).",
+  "license": "MIT",
+  "author": "Iris (iriscan.app)",
+  "homepage": "https://iriscan.app",
+  "keywords": ["solana", "pumpfun", "rug-check", "trading-bot", "sniper", "memecoin", "jupiter", "bundle", "proxima", "iris"],
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "bin": {
+    "iris-guard": "./dist/cli.js"
+  },
+  "files": ["dist", "README.md", "LICENSE"],
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit && tsc -p tsconfig.test.json",
+    "test": "node --test test/*.test.ts",
+    "test:live": "IRIS_LIVE=1 node --test test/live.test.ts",
+    "prepublishOnly": "npm run build && npm test"
+  },
+  "dependencies": {
+    "@iriscan/sdk": "file:../iris-sdk-js"
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.0",
+    "typescript": "^5.9.3"
+  }
+}

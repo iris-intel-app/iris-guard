@@ -1,0 +1,3 @@
+# Local development against the SDK checkout next to this repo (until iriscan is on PyPI).
+-e ../../iris-sdk-python
+-e .

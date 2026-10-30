@@ -1,0 +1,56 @@
+{
+  "wallet": "2zy2NEyvzXfPkdFesbisZViTyz6oCWERFEvSD9PfoRg1",
+  "mint": null,
+  "from_mint": null,
+  "tool": "proxima",
+  "tool_name": "Proxima",
+  "tool_site": "",
+  "checked": [
+    "Proxima",
+    "BlockX"
+  ],
+  "verdict": "tool",
+  "verdict_name": "Proxima",
+  "confidence": 0.95,
+  "evidence": [
+    {
+      "kind": "sell_fee",
+      "strength": "strong",
+      "text": "Paid Proxima's sell fee",
+      "signatures": [
+        "sig"
+      ]
+    }
+  ],
+  "tokens_launched": [
+    {
+      "mint": "Mint0011111111111111111111111111111111111111",
+      "name": "Token 0",
+      "symbol": "T0",
+      "time": "2026-10-01T12:00:00Z",
+      "signature": "sig",
+      "relays": [],
+      "tip_signatures": []
+    }
+  ],
+  "sells": {
+    "seen": 0,
+    "through_tool": 0,
+    "sol_received": 0.0,
+    "fees_sol": 0.0,
+    "unconfirmed": 0,
+    "fees": []
+  },
+  "fee_wallets": [],
+  "claims": [],
+  "funding": null,
+  "window": {
+    "transactions": 1000,
+    "oldest": null,
+    "newest": null,
+    "whole_history": true
+  },
+  "requests": 40,
+  "complete": true,
+  "notes": []
+}

@@ -1,0 +1,146 @@
+{
+  "wallet": "2zy2NEyvzXfPkdFesbisZViTyz6oCWERFEvSD9PfoRg1",
+  "mint": null,
+  "from_mint": null,
+  "tool": "proxima",
+  "tool_name": "Proxima",
+  "tool_site": "",
+  "checked": [
+    "Proxima",
+    "BlockX"
+  ],
+  "verdict": "none",
+  "verdict_name": "No evidence",
+  "confidence": 0.0,
+  "evidence": [],
+  "tokens_launched": [
+    {
+      "mint": "Mint0011111111111111111111111111111111111111",
+      "name": "Token 0",
+      "symbol": "T0",
+      "time": "2026-10-01T12:00:00Z",
+      "signature": "sig",
+      "relays": [],
+      "tip_signatures": []
+    },
+    {
+      "mint": "Mint0111111111111111111111111111111111111111",
+      "name": "Token 1",
+      "symbol": "T1",
+      "time": "2026-10-02T12:00:00Z",
+      "signature": "sig",
+      "relays": [],
+      "tip_signatures": []
+    },
+    {
+      "mint": "Mint0211111111111111111111111111111111111111",
+      "name": "Token 2",
+      "symbol": "T2",
+      "time": "2026-10-03T12:00:00Z",
+      "signature": "sig",
+      "relays": [],
+      "tip_signatures": []
+    },
+    {
+      "mint": "Mint0311111111111111111111111111111111111111",
+      "name": "Token 3",
+      "symbol": "T3",
+      "time": "2026-10-04T12:00:00Z",
+      "signature": "sig",
+      "relays": [],
+      "tip_signatures": []
+    },
+    {
+      "mint": "Mint0411111111111111111111111111111111111111",
+      "name": "Token 4",
+      "symbol": "T4",
+      "time": "2026-10-05T12:00:00Z",
+      "signature": "sig",
+      "relays": [],
+      "tip_signatures": []
+    },
+    {
+      "mint": "Mint0511111111111111111111111111111111111111",
+      "name": "Token 5",
+      "symbol": "T5",
+      "time": "2026-10-06T12:00:00Z",
+      "signature": "sig",
+      "relays": [],
+      "tip_signatures": []
+    },
+    {
+      "mint": "Mint0611111111111111111111111111111111111111",
+      "name": "Token 6",
+      "symbol": "T6",
+      "time": "2026-10-07T12:00:00Z",
+      "signature": "sig",
+      "relays": [],
+      "tip_signatures": []
+    },
+    {
+      "mint": "Mint0711111111111111111111111111111111111111",
+      "name": "Token 7",
+      "symbol": "T7",
+      "time": "2026-10-08T12:00:00Z",
+      "signature": "sig",
+      "relays": [],
+      "tip_signatures": []
+    },
+    {
+      "mint": "Mint0811111111111111111111111111111111111111",
+      "name": "Token 8",
+      "symbol": "T8",
+      "time": "2026-10-09T12:00:00Z",
+      "signature": "sig",
+      "relays": [],
+      "tip_signatures": []
+    },
+    {
+      "mint": "Mint0911111111111111111111111111111111111111",
+      "name": "Token 9",
+      "symbol": "T9",
+      "time": "2026-10-10T12:00:00Z",
+      "signature": "sig",
+      "relays": [],
+      "tip_signatures": []
+    },
+    {
+      "mint": "Mint1011111111111111111111111111111111111111",
+      "name": "Token 10",
+      "symbol": "T10",
+      "time": "2026-10-11T12:00:00Z",
+      "signature": "sig",
+      "relays": [],
+      "tip_signatures": []
+    },
+    {
+      "mint": "Mint1111111111111111111111111111111111111111",
+      "name": "Token 11",
+      "symbol": "T11",
+      "time": "2026-10-12T12:00:00Z",
+      "signature": "sig",
+      "relays": [],
+      "tip_signatures": []
+    }
+  ],
+  "sells": {
+    "seen": 0,
+    "through_tool": 0,
+    "sol_received": 0.0,
+    "fees_sol": 0.0,
+    "unconfirmed": 0,
+    "fees": []
+  },
+  "fee_wallets": [],
+  "claims": [],
+  "funding": null,
+  "window": {
+    "transactions": 1000,
+    "oldest": null,
+    "newest": null,
+    "whole_history": true
+  },
+  "requests": 40,
+  "complete": true,
+  "notes": []
+}
