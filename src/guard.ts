@@ -5,9 +5,9 @@ import type { GuardResult, GuardSummary, Mode, Policy } from "./types.ts";
 
 /** The Iris calls a guard makes: `Iris` from the SDK, or anything shaped like it. */
 export interface IrisClient {
-  launchTool(walletOrMint: string, options?: { mint?: string }): Promise<any>;
-  analyze(address: string, options?: { chain?: string; depth?: number }): Promise<any>;
-  insiders(mint: string, options?: { chain?: string; limit?: number; depth?: number }): Promise<any>;
+  launchTool(walletOrMint: string, options?: { mint?: string; signal?: AbortSignal }): Promise<any>;
+  analyze(address: string, options?: { signal?: AbortSignal }): Promise<any>;
+  insiders(mint: string, options?: { signal?: AbortSignal }): Promise<any>;
 }
 
 export interface GuardOptions {
@@ -84,13 +84,18 @@ function describe(e: unknown): NonNullable<GuardResult["error"]> {
   return { message, ...(status !== undefined && { status }), ...(code !== undefined && { code }) };
 }
 
-function withTimeout<T>(work: Promise<T>, ms: number): Promise<T> {
-  if (!(ms > 0) || !Number.isFinite(ms)) return work;
+/** `work` within `ms`, else a TimeoutError; the calls still running are aborted. */
+function withTimeout<T>(work: (signal: AbortSignal) => Promise<T>, ms: number): Promise<T> {
+  const controller = new AbortController();
+  if (!(ms > 0) || !Number.isFinite(ms)) return work(controller.signal);
   let timer: ReturnType<typeof setTimeout>;
   const deadline = new Promise<never>((_, reject) => {
-    timer = setTimeout(() => reject(new TimeoutError(ms)), ms);
+    timer = setTimeout(() => {
+      reject(new TimeoutError(ms));
+      controller.abort();
+    }, ms);
   });
-  return Promise.race([work, deadline]).finally(() => clearTimeout(timer));
+  return Promise.race([work(controller.signal), deadline]).finally(() => clearTimeout(timer));
 }
 
 /**
@@ -121,17 +126,17 @@ export function createGuard(options: GuardOptions = {}): Guard {
   const cache = new Map<string, { expires: number; result: GuardResult }>();
   const inflight = new Map<string, Promise<GuardResult>>();
 
-  async function read(mint: string): Promise<GuardSummary> {
+  async function read(mint: string, signal: AbortSignal): Promise<GuardSummary> {
     const summary = emptySummary(mint, mode);
     if (mode === "free") {
-      readLaunchTool(summary, await client.launchTool(mint));
+      readLaunchTool(summary, await client.launchTool(mint, { signal }));
       return summary;
     }
     // Full: the analysis decides; the free scan and the insider search add to it when they answer.
     const [analysis, scan, insiders] = await Promise.allSettled([
-      client.analyze(mint),
-      client.launchTool(mint),
-      useInsiders ? client.insiders(mint) : Promise.resolve(null),
+      client.analyze(mint, { signal }),
+      client.launchTool(mint, { signal }),
+      useInsiders ? client.insiders(mint, { signal }) : Promise.resolve(null),
     ]);
     if (analysis.status === "rejected") throw analysis.reason;
     readAnalyze(summary, analysis.value);
@@ -145,7 +150,7 @@ export function createGuard(options: GuardOptions = {}): Guard {
   async function run(mint: string): Promise<GuardResult> {
     const started = Date.now();
     try {
-      const summary = await withTimeout(read(mint), timeoutMs);
+      const summary = await withTimeout((signal) => read(mint, signal), timeoutMs);
       const verdict = evaluate(summary, policy);
       const result: GuardResult = { mint, ...verdict, summary, mode, latencyMs: Date.now() - started, cached: false };
       if (cacheTtlMs > 0) cache.set(mint, { expires: Date.now() + cacheTtlMs, result });

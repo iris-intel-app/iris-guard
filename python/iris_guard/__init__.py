@@ -25,4 +25,4 @@ __all__ = [
     "evaluate",
     "with_guard",
 ]
-__version__ = "0.1.0"
+from .guard import VERSION as __version__  # noqa: E402

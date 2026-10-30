@@ -162,6 +162,17 @@ describe("failures", () => {
     assert.equal(open.allow, true);
   });
 
+  it("aborts the calls still running at the deadline", async () => {
+    let signal: AbortSignal | undefined;
+    const client: IrisClient = {
+      launchTool: (_mint, options) => ((signal = options?.signal), new Promise(() => {})),
+      analyze: async () => null,
+      insiders: async () => null,
+    };
+    await guard(client, { timeoutMs: 30 }).check(MINT);
+    assert.equal(signal?.aborted, true);
+  });
+
   it("refuses what is not a mint without calling Iris", async () => {
     const { client, calls } = mock({});
     const r = await guard(client).check("not-a-mint");

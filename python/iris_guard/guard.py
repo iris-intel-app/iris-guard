@@ -16,6 +16,8 @@ from .summarize import read_analyze, read_insiders, read_launch_tool
 from .types import GuardResult, GuardSummary, Mode
 
 PRICING = "https://iriscan.app/pricing"
+#: Sent in the User-Agent, so Iris can tell guard traffic apart.
+VERSION = "0.1.0"
 _BASE58 = re.compile(r"^[1-9A-HJ-NP-Za-km-z]{32,44}$")
 T = TypeVar("T")
 
@@ -152,9 +154,8 @@ class _Core:
 
 
 def _sdk_kwargs(api_key: Optional[str], base_url: Optional[str], timeout: float) -> dict[str, Any]:
-    kwargs: dict[str, Any] = {"timeout": timeout}
-    if api_key:
-        kwargs["api_key"] = api_key
+    # "" when none: the guard already read IRIS_API_KEY, the SDK must not fall back to it.
+    kwargs: dict[str, Any] = {"api_key": api_key or "", "timeout": timeout, "user_agent": f"iris-guard-python/{VERSION}"}
     if base_url:
         kwargs["base_url"] = base_url
     return kwargs
