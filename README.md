@@ -7,6 +7,8 @@
 bundled launches whose bundle still holds the supply, devs who still hold a bag or already dumped,
 tokens launched with Proxima or BlockX, and anything Iris scores as high risk.
 
+**You need an Iris API key.** A free account (email or Solana wallet, no card) gives you one in a minute: **https://iriscan.app/account**. Full mode (bundle, dev and risk score) uses credits: [pricing](https://iriscan.app/pricing).
+
 <!-- GIF placeholder: record a terminal running the pump.fun sniper example, BLOCK lines scrolling
      past with their reasons, then one ALLOW and a buy. ~10 s, 800 px wide, saved as docs/demo.gif. -->
 
